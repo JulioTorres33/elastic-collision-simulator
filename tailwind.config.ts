@@ -57,6 +57,19 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Physics Simulator Colors
+        "car-red": "hsl(var(--car-red))",
+        "car-blue": "hsl(var(--car-blue))",
+        "road-dark": "hsl(var(--road-dark))",
+        "road-light": "hsl(var(--road-light))",
+        "control-panel": "hsl(var(--control-panel))",
+        "control-panel-border": "hsl(var(--control-panel-border))",
+        "button-primary": "hsl(var(--button-primary))",
+        "button-secondary": "hsl(var(--button-secondary))",
+        "button-danger": "hsl(var(--button-danger))",
+      },
+      backgroundImage: {
+        "sky-gradient": "var(--sky-gradient)",
       },
       borderRadius: {
         lg: "var(--radius)",
