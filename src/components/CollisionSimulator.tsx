@@ -264,7 +264,7 @@ export const CollisionSimulator = () => {
 
           {/* Car A */}
           <div
-            className="absolute top-8 w-16 h-12 bg-car-red rounded-lg shadow-lg transition-all duration-100 flex items-center justify-center"
+            className="absolute top-1/2 w-16 h-12 bg-car-red rounded-lg shadow-lg transition-all duration-100 flex items-center justify-center transform -translate-y-1/2"
             style={{ left: `${carA.position}px` }}
           >
             <div className="text-white text-xs font-bold">
@@ -275,7 +275,7 @@ export const CollisionSimulator = () => {
 
           {/* Car B */}
           <div
-            className="absolute bottom-8 w-16 h-12 bg-car-blue rounded-lg shadow-lg transition-all duration-100 flex items-center justify-center"
+            className="absolute top-1/2 w-16 h-12 bg-car-blue rounded-lg shadow-lg transition-all duration-100 flex items-center justify-center transform -translate-y-1/2"
             style={{ left: `${carB.position}px` }}
           >
             <div className="text-white text-xs font-bold">
