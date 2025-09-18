@@ -1,4 +1,4 @@
-import { CollisionSimulator } from "@/components/CollisionSimulator";
+import  CollisionSimulator  from "@/components/CollisionSimulator";
 
 const Index = () => {
   return <CollisionSimulator />;
