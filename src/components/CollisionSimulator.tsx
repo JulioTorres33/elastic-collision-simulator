@@ -30,7 +30,7 @@ export const CollisionSimulator = () => {
     mass: 4.0,
     initialVelocity: 5.0,
     currentVelocity: 5.0,
-    position: 100,
+    position: 50,
     id: "carA",
     color: "car-red"
   });
@@ -39,7 +39,7 @@ export const CollisionSimulator = () => {
     mass: 4.0,
     initialVelocity: -3.0,
     currentVelocity: -3.0,
-    position: 500,
+    position: 550,
     id: "carB",
     color: "car-blue"
   });
@@ -95,8 +95,8 @@ export const CollisionSimulator = () => {
         return { ...prev, position: newPosition };
       });
 
-      // Check for collision
-      if (Math.abs(carA.position - carB.position) < 50 && !hasCollided) {
+      // Check for collision - más preciso para que se vea el choque
+      if (Math.abs(carA.position - carB.position) < 20 && !hasCollided) {
         setHasCollided(true);
         const { v1Final, v2Final } = calculateElasticCollision(carA, carB);
         
@@ -135,12 +135,12 @@ export const CollisionSimulator = () => {
     setHasCollided(false);
     setCarA(prev => ({
       ...prev,
-      position: 100,
+      position: 50,
       currentVelocity: prev.initialVelocity
     }));
     setCarB(prev => ({
       ...prev,
-      position: 500,
+      position: 550,
       currentVelocity: prev.initialVelocity
     }));
     toast("Simulación reiniciada");
