@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Login from "./components/ui/Login";  // Importa el componente Login
+import LevelInfo from "./components/LevelInfo";
 
 const queryClient = new QueryClient();
 
@@ -19,9 +20,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Login />} /> {/* Ruta para el Login */}
           <Route path="/home" element={<Home />} /> {/* Ruta para la página de niveles */}
-          <Route path="/nivel-1" element={<Index />} /> {/* Simulador para nivel 1 */}
-          <Route path="/nivel-2" element={<Index />} /> {/* Simulador para nivel 2 */}
-          <Route path="/nivel-3" element={<Index />} /> {/* Simulador para nivel 3 */}
+          <Route path="/nivel-:level" element={<LevelInfo />} /> {/* Información de cada nivel */}
+          <Route path="/simulador/:level" element={<Index />} /> {/* Simulador */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -5,8 +5,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleLevelClick = (level: number) => {
-    // Por ahora todos los niveles van al mismo simulador
-    // Más adelante se pueden crear simuladores específicos
+    // Navegar a la información del nivel antes del simulador
     navigate(`/nivel-${level}`);
   };
 
