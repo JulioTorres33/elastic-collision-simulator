@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -11,9 +12,9 @@ const CAR_HIT_WIDTH = 80;         // ancho efectivo de colisión (px)
 const ROAD_PADDING = 24;
 const WHEEL_OFFSET = 6;
 
-// Alinear carretera con el arte del fondo:
-const ROAD_ALIGN_OFFSET = 14;     // + baja la vía; - la sube
-const DASH_TOP_OFFSET = 42;       // altura de las líneas amarillas dentro de la vía
+// Alinear carretera con el arte del fondo
+const ROAD_ALIGN_OFFSET = 16;     // ajusta a tu gusto (16 recomendado)
+const DASH_TOP_OFFSET = 42;       // 42 recomendado
 
 // Globos más arriba del auto
 const BUBBLE_OFFSET = 72;
@@ -33,6 +34,8 @@ interface Car {
 
 /* ================= Componente ================= */
 export function CollisionSimulator() {
+  const navigate = useNavigate();
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasCollided, setHasCollided] = useState(false);
   const [flash, setFlash] = useState(false);
@@ -275,6 +278,17 @@ export function CollisionSimulator() {
         backgroundRepeat: "no-repeat",
       }}
     >
+      {/* Botón volver al Home */}
+      <div className="absolute left-4 top-4 z-20">
+        <Button
+          variant="secondary"
+          className="bg-white/90 hover:bg-white border"
+          onClick={() => navigate("/")}
+        >
+          ← Volver al inicio
+        </Button>
+      </div>
+
       <h1 className="text-center pt-6 text-4xl font-extrabold">Choque Directo</h1>
       <p className="text-center text-slate-700">Simulación de Colisión Elástica</p>
 
@@ -318,7 +332,7 @@ export function CollisionSimulator() {
         ref={containerRef}
         className="relative mx-auto mt-6 h-[260px] max-w-6xl overflow-hidden rounded-2xl border border-slate-300 bg-gradient-to-b from-sky-200/50 to-sky-300/50"
       >
-        {/* flash de colisión (sólo al primer choque) */}
+        {/* flash de colisión */}
         {flash && <div className="pointer-events-none absolute inset-0 z-10 bg-white/40 animate-pulse" />}
 
         {/* Carretera alineada con el fondo */}
@@ -377,7 +391,7 @@ export function CollisionSimulator() {
           <Button onClick={reset} variant="destructive">Reiniciar</Button>
         </div>
 
-        {/* En pantallas pequeñas el mensaje pasa debajo */}
+        {/* En móviles el mensaje pasa debajo */}
         <div className="mt-2 block text-right md:hidden" aria-live="polite">
           <span className="inline-block rounded-md border bg-white/90 px-3 py-1 text-sm font-medium text-slate-800 shadow">
             {hasCollided

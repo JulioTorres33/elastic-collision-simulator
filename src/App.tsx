@@ -1,13 +1,15 @@
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
-import Login from "./components/ui/Login";  // Importa el componente Login
-import LevelInfo from "./components/LevelInfo";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
+import Login from "@/components/ui/Login";
+import Home from "@/pages/Home";
+import LevelInfo from "@/pages/LevelInfo";
+import Index from "@/pages/Index";
+import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -18,10 +20,19 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Login />} /> {/* Ruta para el Login */}
-          <Route path="/home" element={<Home />} /> {/* Ruta para la página de niveles */}
-          <Route path="/nivel-:level" element={<LevelInfo />} /> {/* Información de cada nivel */}
-          <Route path="/simulador/:level" element={<Index />} /> {/* Simulador */}
+          <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+
+          {/* Pantalla de información y simulador (segmento dinámico) */}
+          <Route path="/nivel/:level/intro" element={<LevelInfo />} />
+          <Route path="/nivel/:level/jugar" element={<Index />} />
+
+          {/* Atajos / compatibilidad */}
+          <Route path="/nivel-1" element={<Navigate to="/nivel/1/intro" replace />} />
+          <Route path="/nivel-2" element={<Navigate to="/home" replace />} />
+          <Route path="/nivel-3" element={<Navigate to="/home" replace />} />
+
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
@@ -30,4 +41,3 @@ const App = () => (
 );
 
 export default App;
-
