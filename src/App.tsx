@@ -10,6 +10,8 @@ import Home from "@/pages/Home";
 import LevelInfo from "@/pages/LevelInfo";
 import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
+import InelasticCollision from "@/components/inelasticCollision";
+import WallBounceSimulator from "@/components/WallBounceSimulator";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ const App = () => (
           {/* Pantalla de información y simulador (segmento dinámico) */}
           <Route path="/nivel/:level/intro" element={<LevelInfo />} />
           <Route path="/nivel/:level/jugar" element={<Index />} />
+          <Route path="/nivel/1/escenario/2" element={<InelasticCollision />} />
+          <Route path="/nivel/1/escenario/3" element={<WallBounceSimulator />} />
 
           {/* Atajos / compatibilidad */}
           <Route path="/nivel-1" element={<Navigate to="/nivel/1/intro" replace />} />
