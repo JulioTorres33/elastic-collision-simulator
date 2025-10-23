@@ -5,9 +5,13 @@ export default function Home() {
   const navigate = useNavigate();
 
   const goNivel1 = () => {
-    // (opcional) si luego quieres “proteger” el acceso al simulador
     sessionStorage.setItem("entry:nivel1", "ok");
-    navigate("/nivel/1/intro");   // ← a la pantalla de información del nivel 1
+    navigate("/nivel/1/intro");
+  };
+
+  const goNivel2 = () => {
+    sessionStorage.setItem("entry:nivel2", "ok");
+    navigate("/nivel/2/intro");
   };
 
   return (
@@ -43,10 +47,10 @@ export default function Home() {
           </Button>
 
           <Button
-            disabled
-            className="w-full px-10 py-5 text-xl md:text-2xl bg-orange-500 text-white rounded-2xl border-4 border-black shadow-[0_6px_0_#000] opacity-70 cursor-not-allowed"
+            onClick={goNivel2}
+            className="w-full px-10 py-5 text-xl md:text-2xl bg-orange-500 hover:bg-orange-600 text-white rounded-2xl border-4 border-black shadow-[0_6px_0_#000] transition-transform hover:scale-[1.02]"
           >
-            Nivel 2: Aplicaciones (Próximamente)
+            Nivel 2: Teorema del Impulso
           </Button>
 
           <Button

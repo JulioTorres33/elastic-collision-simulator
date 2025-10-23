@@ -12,6 +12,8 @@ import Index from "@/pages/Index";
 import NotFound from "@/pages/NotFound";
 import InelasticCollision from "@/components/inelasticCollision";
 import WallBounceSimulator from "@/components/WallBounceSimulator";
+import LevelInfoImpulseMomentum from "@/pages/LevelInfoImpulseMomentum";
+import ImpulseMomentumSimulator from "@/components/ImpulseMomentumSimulator";
 
 const queryClient = new QueryClient();
 
@@ -31,9 +33,13 @@ const App = () => (
           <Route path="/nivel/1/escenario/2" element={<InelasticCollision />} />
           <Route path="/nivel/1/escenario/3" element={<WallBounceSimulator />} />
 
+          {/* Nivel 2: Teorema del Impulso y Momento */}
+          <Route path="/nivel/2/intro" element={<LevelInfoImpulseMomentum />} />
+          <Route path="/nivel/2/escenario/1" element={<ImpulseMomentumSimulator />} />
+
           {/* Atajos / compatibilidad */}
           <Route path="/nivel-1" element={<Navigate to="/nivel/1/intro" replace />} />
-          <Route path="/nivel-2" element={<Navigate to="/home" replace />} />
+          <Route path="/nivel-2" element={<Navigate to="/nivel/2/intro" replace />} />
           <Route path="/nivel-3" element={<Navigate to="/home" replace />} />
 
           {/* 404 */}
