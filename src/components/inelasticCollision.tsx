@@ -95,7 +95,7 @@ export function InelasticCollisionSimulator() {
     : K0;
   const energyLost = K0 - Kf;
 
-  /* ============ Centramos autos ============ */
+  
   useEffect(() => {
     const placeCars = () => {
       const w = containerRef.current?.clientWidth ?? 1000;
@@ -275,7 +275,7 @@ export function InelasticCollisionSimulator() {
     </div>
   );
 
-  /* ================== UI (sin scroll) ================== */
+  
   return (
     <div
       className="h-screen w-screen overflow-hidden text-slate-900 relative"
@@ -312,65 +312,65 @@ export function InelasticCollisionSimulator() {
       >
         <div className="grid h-full grid-rows-[auto_1fr] gap-3 md:gap-4">
           {/* Paneles (altura auto) */}
-<div className="grid grid-cols-1 gap-3 md:grid-cols-3">
-  {/* === PANEL IZQUIERDO: A === */}
-  <Card className="border-slate-300/60 bg-white/90 p-4">
-    <h3 className="mb-2 font-semibold">Masa A (kg)</h3>
-    <div className="flex items-center gap-2">
-      <Slider value={[carA.mass]} min={1} max={10} step={0.5} onValueChange={(v) => setMassA(v[0])} className="flex-1" />
-      <span className="min-w-[3rem] text-right font-mono text-sm">{carA.mass.toFixed(1)}</span>
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          {/* === PANEL IZQUIERDO: A === */}
+          <Card className="border-slate-300/60 bg-white/90 p-4">
+            <h3 className="mb-2 font-semibold">Masa A (kg)</h3>
+        <div className="flex items-center gap-2">
+          <Slider value={[carA.mass]} min={1} max={10} step={0.5} onValueChange={(v) => setMassA(v[0])} className="flex-1" />
+        <span className="min-w-[3rem] text-right font-mono text-sm">{carA.mass.toFixed(1)}</span>
     </div>
 
-    <div className="mt-4">
-      <h3 className="mb-2 font-semibold">Velocidad Inicial A (m/s)</h3>
-      <div className="flex items-center gap-2">
-        <Slider value={[carA.initialVelocity]} min={0} max={20} step={0.5} onValueChange={(v) => setVA0(v[0])} className="flex-1" />
-        <span className="min-w-[3rem] text-right font-mono text-sm">{carA.initialVelocity.toFixed(1)}</span>
+      <div className="mt-4">
+        <h3 className="mb-2 font-semibold">Velocidad Inicial A (m/s)</h3>
+        <div className="flex items-center gap-2">
+          <Slider value={[carA.initialVelocity]} min={0} max={20} step={0.5} onValueChange={(v) => setVA0(v[0])} className="flex-1" />
+          <span className="min-w-[3rem] text-right font-mono text-sm">{carA.initialVelocity.toFixed(1)}</span>
+        </div>
       </div>
-    </div>
 
-    <div className="mt-4">
-      <h3 className="mb-2 font-semibold">Inelástico (e)</h3>
-      <div className="flex items-center gap-2">
-        <Slider value={[restitution]} min={0} max={1} step={0.1} onValueChange={(v) => setRestitution(v[0])} className="flex-1" />
-        <span className="min-w-[3rem] text-right font-mono text-sm">{restitution.toFixed(1)}</span>
+      <div className="mt-4">
+        <h3 className="mb-2 font-semibold">Inelástico (e)</h3>
+        <div className="flex items-center gap-2">
+          <Slider value={[restitution]} min={0} max={1} step={0.1} onValueChange={(v) => setRestitution(v[0])} className="flex-1" />
+          <span className="min-w-[3rem] text-right font-mono text-sm">{restitution.toFixed(1)}</span>
+        </div>
       </div>
-    </div>
-  </Card>
+    </Card>
 
-  {/* === PANEL CENTRAL: Conservación === */}
-  <Card className="border-slate-300/60 bg-white/90 p-4">
-    <h3 className="font-semibold mb-3">Conservación del momento y energía cinética</h3>
-    <div className="grid grid-cols-2 gap-2 text-xs font-semibold mb-2">
-      <div className="text-center">Antes</div>
-      <div className="text-center">Después</div>
-    </div>
-    <div className="space-y-2">
-      <div className="grid grid-cols-2 gap-2">
-        <div className="flex items-center justify-center rounded-md border bg-white/70 px-2 py-2 text-sm">
-          {p0.toFixed(1)}
+    {/* === PANEL CENTRAL: Conservación === */}
+    <Card className="border-slate-300/60 bg-white/90 p-4">
+      <h3 className="font-semibold mb-3">Conservación del momento y energía cinética</h3>
+      <div className="grid grid-cols-2 gap-2 text-xs font-semibold mb-2">
+        <div className="text-center">Antes</div>
+        <div className="text-center">Después</div>
+      </div>
+      <div className="space-y-2">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="flex items-center justify-center rounded-md border bg-white/70 px-2 py-2 text-sm">
+            {p0.toFixed(1)}
+          </div>
+          <div className="flex items-center justify-center gap-1 rounded-md border bg-white/70 px-2 py-2 text-sm">
+            {pf.toFixed(1)}
+            {hasCollided && Math.abs(p0 - pf) < 0.1 && <Check className="w-4 h-4 text-green-600" />}
+          </div>
         </div>
-        <div className="flex items-center justify-center gap-1 rounded-md border bg-white/70 px-2 py-2 text-sm">
-          {pf.toFixed(1)}
-          {hasCollided && Math.abs(p0 - pf) < 0.1 && <Check className="w-4 h-4 text-green-600" />}
+        <div className="grid grid-cols-2 gap-2">
+          <div className="flex items-center justify-center rounded-md border bg-white/70 px-2 py-2 text-sm">
+            {K0.toFixed(1)}
+          </div>
+          <div className="flex items-center justify-center gap-1 rounded-md border bg-white/70 px-2 py-2 text-sm">
+            {Kf.toFixed(1)}
+            {hasCollided && Math.abs(K0 - Kf) > 0.1 && <X className="w-4 h-4 text-red-600" />}
+          </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-2">
-        <div className="flex items-center justify-center rounded-md border bg-white/70 px-2 py-2 text-sm">
-          {K0.toFixed(1)}
+      {hasCollided && (
+        <div className="mt-3 rounded-md border border-red-300 bg-red-50 px-3 py-2 text-sm font-semibold text-red-900">
+          Energía Cinética Inicial (J): {K0.toFixed(1)}<br />
+          Energía Cinética Final (J): {Kf.toFixed(1)}<br />
+          Energía Perdida: {energyLost.toFixed(1)} J
         </div>
-        <div className="flex items-center justify-center gap-1 rounded-md border bg-white/70 px-2 py-2 text-sm">
-          {Kf.toFixed(1)}
-          {hasCollided && Math.abs(K0 - Kf) > 0.1 && <X className="w-4 h-4 text-red-600" />}
-        </div>
-      </div>
-    </div>
-    {hasCollided && (
-      <div className="mt-3 rounded-md border border-red-300 bg-red-50 px-3 py-2 text-sm font-semibold text-red-900">
-        Energía Cinética Inicial (J): {K0.toFixed(1)}<br />
-        Energía Cinética Final (J): {Kf.toFixed(1)}<br />
-        Energía Perdida: {energyLost.toFixed(1)} J
-      </div>
     )}
   </Card>
 

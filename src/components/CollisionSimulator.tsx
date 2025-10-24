@@ -5,16 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
 /* ================= Configuración visual/física ================= */
-const PIXELS_PER_METER = 40;      // m/s -> px/s
-const CAR_VISUAL_WIDTH = 200;     // ancho visual PNG (px)
-const CAR_VISUAL_HEIGHT = 72;     // alto visual (px)
-const CAR_HIT_WIDTH = 80;         // ancho efectivo de colisión (px)
+const PIXELS_PER_METER = 40;      
+const CAR_VISUAL_WIDTH = 200;     
+const CAR_VISUAL_HEIGHT = 72;     
+const CAR_HIT_WIDTH = 80;         
 const ROAD_PADDING = 24;
 const WHEEL_OFFSET = 6;
 
 // Alinear carretera con el arte del fondo
-const ROAD_ALIGN_OFFSET = 16;     // ajusta a tu gusto (16 recomendado)
-const DASH_TOP_OFFSET = 42;       // 42 recomendado
+const ROAD_ALIGN_OFFSET = 16;     
+const DASH_TOP_OFFSET = 42;       
 
 // Globos más arriba del auto
 const BUBBLE_OFFSET = 72;

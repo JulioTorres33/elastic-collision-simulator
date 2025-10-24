@@ -283,13 +283,13 @@ export default function WallBounceSimulator() {
           </div>
         </div>
 
-        {/* PARED MUY VISIBLE */}
+      
         <div
           className="absolute top-1/2 -translate-y-1/2"
           style={{
-            left: wallX - 14,             // centrado
-            width: 28,                    // más ancha
-            height: 140,                  // más alta
+            left: wallX - 14,             
+            width: 28,                    
+            height: 140,                  
             border: "3px solid #000",
             borderRadius: 6,
             boxShadow: "0 8px 0 rgba(0,0,0,0.35)",
@@ -308,7 +308,7 @@ export default function WallBounceSimulator() {
     src="/assets/cars/car-blue.png"
     alt="Carro"
     className="h-full w-auto drop-shadow-lg"
-    style={{ transform: "scaleX(-1)" }}  // ← espejado para mirar a la derecha
+    style={{ transform: "scaleX(-1)" }} 
     draggable={false}
   />
   <Bubble text={`m = ${mass.toFixed(1)} kg  •  v = ${v.toFixed(1)} m/s`} />
